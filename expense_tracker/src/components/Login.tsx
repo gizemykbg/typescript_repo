@@ -3,25 +3,37 @@ import { Form, Input, Button, Result } from "antd";
 import showError from "../utils/showError";
 import api from "../utils/api";
 import { useHistory, useLocation } from "react-router-dom";
+import { LoginForm } from "../types/user";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../store/actions/userActions";
+import { AppState } from "../store";
+import { useEffect } from "react";
+import ShowSuccess from "../utils/showSuccess";
 
 const Login = () => {
   const history = useHistory();
   const location = useLocation<{ newSignUp?: boolean }>();
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector((state: AppState) => state.user);
 
-  const onFinish = async (values: any) => {
-    console.log("Success:", values);
-    try {
-      await api.post("/users/login", values);
+  const onFinish = (values: LoginForm) => {
+    dispatch(login(values));
+  };
+
+  useEffect(() => {
+    error && showError(error);
+  }, [error]);
+
+  useEffect(() => {
+    data.username && ShowSuccess("You have successfully logged in");
+  }, [data.username]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
       history.push("/");
-    } catch (error) {
-      console.log({ error });
     }
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-    showError(errorInfo);
-  };
+  }, [data]);
   return (
     <Form
       name="basic"
@@ -29,7 +41,7 @@ const Login = () => {
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      // onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <h2 style={{ textAlign: "center", marginBottom: 40 }}>Please login</h2>

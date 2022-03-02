@@ -1,7 +1,9 @@
 import { Route } from "react-router-dom";
 import SignUp from "./components/SignUp";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu } from "antd";
 import Login from "./components/Login";
+import PrivateRoute from "./components/PrivateRoute";
+import Categories from "./components/Categories";
 function App() {
   const { Header, Content, Footer } = Layout;
   return (
@@ -19,14 +21,9 @@ function App() {
           className="site-layout"
           style={{ padding: "50px", marginTop: 64 }}
         >
-          <Route path="/register" element={SignUp} />
-          <Route path="/login" element={Login} />
-          {/* <div
-            className="site-layout-background"
-            style={{ padding: 24, minHeight: 380 }}
-          >
-            Content
-          </div> */}
+          <Route path="/register" component={SignUp} />
+          <Route path="/login" component={Login} />
+          <PrivateRoute path="/categories" component={Categories} />
         </Content>
         <Footer style={{ textAlign: "center" }}>Expense Tracker</Footer>
       </Layout>
