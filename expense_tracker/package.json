@@ -46,5 +46,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/antd": "^1.0.0",
+    "@types/react-color": "^3.0.6",
+    "@types/react-redux": "^7.1.23",
+    "@types/redux-thunk": "^2.1.0"
   }
 }
