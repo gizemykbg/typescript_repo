@@ -27,6 +27,29 @@ const categoryReducer = (
       };
     case "ADD_CATEGORY_ERROR":
       return { ...state, loading: false, error: "Error adding categories" };
+    case "UPDATE_CATEGORY_START":
+      return { ...state, loading: true, error: "" };
+    case "UPDATE_CATEGORY_SUCCESS":
+      return {
+        ...state,
+        data: state.data.map((item) =>
+          item.id === action.payload.id ? action.payload : item
+        ),
+        loading: false,
+      };
+    case "UPDATE_CATEGORY_ERROR":
+      return { ...state, loading: false, error: "Error updating categories" };
+    case "DELETE_CATEGORY_START":
+      return { ...state, loading: true, error: "" };
+    case "DELETE_CATEGORY_SUCCESS":
+      return {
+        ...state,
+        data: state.data.filter((item) => item.id !== action.payload),
+        loading: false,
+      };
+    case "DELETE_CATEGORY_ERROR":
+      return { ...state, loading: false, error: "Error deleting categories" };
+
     default:
       return state;
   }
