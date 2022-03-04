@@ -21,6 +21,16 @@ const recordReducer = (
       };
     case "GET_RECORDS_ERROR":
       return { ...state, loading: false, error: "Error fetching records" };
+    case "ADD_RECORDS_START":
+      return { ...state, loading: true, error: "" };
+    case "ADD_RECORDS_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        data: [action.payload, ...state.data],
+      };
+    case "ADD_RECORDS_ERROR":
+      return { ...state, loading: false, error: "Error adding records" };
     default:
       return state;
   }

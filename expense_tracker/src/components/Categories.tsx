@@ -22,8 +22,7 @@ import {
 import { AppState } from "../store";
 import { SketchPicker } from "react-color";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-
-type Mode = "new" | "edit" | "delete";
+import { Mode } from "../types/general";
 
 const emptyForm: CategoryForm = {
   name: "",
