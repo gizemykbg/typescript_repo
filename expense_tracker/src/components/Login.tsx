@@ -1,7 +1,5 @@
-import React from "react";
 import { Form, Input, Button, Result } from "antd";
 import showError from "../utils/showError";
-import api from "../utils/api";
 import { useHistory, useLocation } from "react-router-dom";
 import { LoginForm } from "../types/user";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +12,7 @@ const Login = () => {
   const history = useHistory();
   const location = useLocation<{ newSignUp?: boolean }>();
   const dispatch = useDispatch();
-  const { data, loading, error } = useSelector((state: AppState) => state.user);
+  const { data, error } = useSelector((state: AppState) => state.user);
 
   const onFinish = (values: LoginForm) => {
     dispatch(login(values));
@@ -33,6 +31,7 @@ const Login = () => {
     if (token) {
       history.push("/");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
   return (
     <>

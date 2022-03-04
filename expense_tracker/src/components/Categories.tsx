@@ -30,9 +30,7 @@ const emptyForm: CategoryForm = {
   color: "black",
 };
 const Categories = () => {
-  const { data, loading, error } = useSelector(
-    (state: AppState) => state.categories
-  );
+  const { data, loading } = useSelector((state: AppState) => state.categories);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [mode, setMode] = useState<Mode>("new");
   const [form, setForm] = useState<CategoryForm>(emptyForm);
@@ -109,6 +107,7 @@ const Categories = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

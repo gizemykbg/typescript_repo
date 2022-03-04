@@ -11,6 +11,7 @@ const Logout = () => {
   console.log(data);
   useEffect(() => {
     dispatch(logout());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!data.username) return <Redirect to="/login" />;

@@ -28,9 +28,7 @@ const Records = () => {
   const [updateId, setUpdateId] = useState<number | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
-  const { data, loading, error } = useSelector(
-    (state: AppState) => state.record
-  );
+  const { data, loading } = useSelector((state: AppState) => state.record);
 
   const { data: category } = useSelector((state: AppState) => state.categories);
 
@@ -136,6 +134,7 @@ const Records = () => {
   useEffect(() => {
     dispatch(GetRecords());
     !category.length && dispatch(getCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isFormValid = !(
