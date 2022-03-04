@@ -1,29 +1,25 @@
 import { Route } from "react-router-dom";
 import SignUp from "./components/SignUp";
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
 import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Categories from "./components/Categories";
-import Records from "./components/records";
+import Records from "./components/Records";
+import Headers from "./components/Headers";
+import Logout from "./components/Logout";
 function App() {
-  const { Header, Content, Footer } = Layout;
+  const { Content, Footer } = Layout;
   return (
     <>
       <Layout>
-        <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu>
-        </Header>
+        <Headers />
         <Content
           className="site-layout"
           style={{ padding: "50px", marginTop: 64 }}
         >
           <Route path="/register" component={SignUp} />
           <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
           <PrivateRoute path="/categories" component={Categories} />
           <PrivateRoute path="/records" component={Records} />
         </Content>

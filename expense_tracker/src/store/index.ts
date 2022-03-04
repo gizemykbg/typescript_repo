@@ -9,13 +9,13 @@ import userReducer from "./reducers/userReducer";
 export interface AppState {
   user: UserState;
   categories: CategoryState;
-  records: RecordState;
+  record: RecordState;
 }
 
 const rootReducer = combineReducers<AppState>({
   user: userReducer,
   categories: categoryReducer,
-  records: recordReducer,
+  record: recordReducer,
 });
 
 export default rootReducer;

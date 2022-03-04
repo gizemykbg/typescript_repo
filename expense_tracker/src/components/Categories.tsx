@@ -109,7 +109,7 @@ const Categories = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategories());
-  });
+  }, []);
 
   return (
     <>
@@ -172,7 +172,12 @@ const Categories = () => {
           ) : null}
         </Modal>
       </div>
-      <Table loading={loading} columns={columns} dataSource={data} />
+      <Table
+        loading={loading}
+        columns={columns}
+        dataSource={data}
+        rowKey="id"
+      />
     </>
   );
 };

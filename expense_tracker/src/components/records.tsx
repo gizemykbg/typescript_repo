@@ -29,7 +29,7 @@ const Records = () => {
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
   const { data, loading, error } = useSelector(
-    (state: AppState) => state.records
+    (state: AppState) => state.record
   );
 
   const { data: category } = useSelector((state: AppState) => state.categories);
@@ -202,7 +202,9 @@ const Records = () => {
                   </Select.Option>
                   {category.map((item) => {
                     return (
-                      <Select.Option value={item.id}>{item.name}</Select.Option>
+                      <Select.Option key={item.id} value={item.id}>
+                        {item.name}
+                      </Select.Option>
                     );
                   })}
                 </Select>
@@ -213,7 +215,12 @@ const Records = () => {
           ) : null}
         </Modal>
       </div>
-      <Table loading={loading} columns={columns} dataSource={data} />
+      <Table
+        loading={loading}
+        columns={columns}
+        dataSource={data}
+        rowKey="id"
+      />
     </>
   );
 };
