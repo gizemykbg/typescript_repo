@@ -31,6 +31,29 @@ const recordReducer = (
       };
     case "ADD_RECORDS_ERROR":
       return { ...state, loading: false, error: "Error adding records" };
+    case "UPDATE_RECORD_START":
+      return { ...state, loading: true, error: "" };
+    case "UPDATE_RECORD_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        data: state.data.map((item) =>
+          item.id === action.payload.id ? action.payload : item
+        ),
+      };
+    case "UPDATE_RECORD_ERROR":
+      return { ...state, loading: false, error: "Error adding records" };
+    case "DELETE_RECORD_START":
+      return { ...state, loading: true, error: "" };
+    case "DELETE_RECORD_SUCCESS":
+      return {
+        ...state,
+        data: state.data.filter((item) => item.id !== action.payload),
+        loading: false,
+      };
+    case "DELETE_RECORD_ERROR":
+      return { ...state, loading: false, error: "Error deleting record" };
+
     default:
       return state;
   }

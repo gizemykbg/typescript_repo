@@ -3,7 +3,12 @@ import { Table, Space, Tag, Button, Modal, Form, Input, Select } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../store";
-import { AddRecords, GetRecords } from "../store/actions/recordActions";
+import {
+  AddRecords,
+  deleteRecord,
+  GetRecords,
+  updateRecord,
+} from "../store/actions/recordActions";
 import { Category } from "../types/category";
 import { Record, RecordForm } from "../types/record";
 import { Mode } from "../types/general";
@@ -102,12 +107,29 @@ const Records = () => {
     {
       title: "Action",
       key: "action",
-      render: (text: string, record: Record) => (
-        <Space size="middle">
-          <EditOutlined style={{ color: "#0390fc" }} onClick={() => {}} />
-          <DeleteOutlined style={{ color: "#c20808" }} />
-        </Space>
-      ),
+      render: (text: string, record: Record) => {
+        const { title, amount } = record;
+        const category_id = record.category.id;
+        return (
+          <Space size="middle">
+            <EditOutlined
+              style={{ color: "#0390fc" }}
+              onClick={() => {
+                showModal("edit");
+                setForm({ title, amount, category_id });
+                setUpdateId(record.id);
+              }}
+            />
+            <DeleteOutlined
+              style={{ color: "#c20808" }}
+              onClick={() => {
+                showModal("delete");
+                setDeleteId(record.id);
+              }}
+            />
+          </Space>
+        );
+      },
     },
   ];
   const dispatch = useDispatch();

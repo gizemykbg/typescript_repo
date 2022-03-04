@@ -42,12 +42,37 @@ interface ADD_SUCCESS {
 interface ADD_ERROR {
   type: "ADD_RECORDS_ERROR";
 }
-
+interface UPDATE_START {
+  type: "UPDATE_RECORD_START";
+}
+interface UPDATE_SUCCESS {
+  type: "UPDATE_RECORD_SUCCESS";
+  payload: Record;
+}
+interface UPDATE_ERROR {
+  type: "UPDATE_RECORD_ERROR";
+}
+interface DELETE_START {
+  type: "DELETE_RECORD_START";
+}
+interface DELETE_SUCCESS {
+  type: "DELETE_RECORD_SUCCESS";
+  payload: Record["id"];
+}
+interface DELETE_ERROR {
+  type: "DELETE_RECORD_ERROR";
+}
 export type RecordAction =
   | GET_START
   | GET_ERROR
   | GET_SUCCESS
   | ADD_START
   | ADD_ERROR
-  | ADD_SUCCESS;
+  | ADD_SUCCESS
+  | UPDATE_START
+  | UPDATE_ERROR
+  | UPDATE_SUCCESS
+  | DELETE_START
+  | DELETE_ERROR
+  | DELETE_SUCCESS;
 export type RecordDispatch = ThunkDispatch<RecordState, void, RecordAction>;
