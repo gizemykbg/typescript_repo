@@ -17,6 +17,12 @@
       "email": "james@gmail.com",
       "contact": "94948384858688",
       "id": 3
+    },
+    {
+      "name": "Harry Potter",
+      "email": "harrypotter@gmail.com",
+      "contact": "1234567",
+      "id": 6
     }
   ]
 }

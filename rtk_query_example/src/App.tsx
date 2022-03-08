@@ -5,7 +5,7 @@ import AddEdit from "./pages/AddEdit";
 import Home from "./pages/Home";
 import Info from "./pages/Info";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/react-toastify.cjs.development";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
