@@ -2,14 +2,15 @@ import React from "react";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useContactsQuery } from "../services/contactsApi";
+import { useContactQuery } from "../services/contactsApi";
 
 import "./Info.css";
 
 const Info = () => {
   const { id } = useParams();
-  const { data, error } = useContactsQuery(id!);
-
+  console.log(id);
+  const { data, error } = useContactQuery(id!);
+  console.log(data);
   useEffect(() => {
     if (error) {
       toast.error("Something went wrong");

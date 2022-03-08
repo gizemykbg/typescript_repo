@@ -1,12 +1,6 @@
 {
   "contact": [
     {
-      "name": "Adam Marcus",
-      "email": "adam123@gmail.com",
-      "contact": "81828384858688",
-      "id": 1
-    },
-    {
       "name": "Tom Cruise",
       "email": "tom@gmail.com",
       "contact": "81828384858699",
@@ -23,6 +17,18 @@
       "email": "harrypotter@gmail.com",
       "contact": "1234567",
       "id": 6
+    },
+    {
+      "name": "gizmo",
+      "email": "test@test.com",
+      "contact": "21323546",
+      "id": 7
+    },
+    {
+      "name": "fatolok",
+      "email": "ankitha@gmail.com",
+      "contact": "1234567",
+      "id": 8
     }
   ]
 }

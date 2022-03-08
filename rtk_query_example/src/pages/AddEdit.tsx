@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
   useAddContactMutation,
-  useContactsQuery,
+  useContactQuery,
   useUpdateContactMutation,
 } from "../services/contactsApi";
 import "./AddEdit.css";
@@ -26,7 +26,7 @@ const AddEdit = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const { data, error } = useContactsQuery(id!);
+  const { data, error } = useContactQuery(id!);
   useEffect(() => {
     if (error && id) {
       toast.error("Something went wrong");
@@ -57,12 +57,13 @@ const AddEdit = () => {
       if (!editMode) {
         await addContact(formValue);
         navigate("/");
-        toast.success("Contact added successfully");
+        toast.success("Contact Added Successfully");
       } else {
         await updateContact(formValue);
+        console.log(updateContact, formValue);
         navigate("/");
         setEditMode(false);
-        toast.success("Contact edited successfully");
+        toast.success("Contact Updated Successfully");
       }
     }
   };
